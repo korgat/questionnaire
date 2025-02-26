@@ -1,4 +1,7 @@
-import { QuestionnaireStorageE } from '@/config/questionnaires/consts'
+import {
+	QUESTIONNAIRE_STEPS,
+	QUESTIONNAIRE_STORAGE,
+} from '@/config/questionnaires/consts'
 import { storageService } from '@/services/storageService'
 import { QuestionAnswer, QuestionnaireAnswers } from '@/types/questionnaire'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
@@ -13,7 +16,7 @@ interface QuestionnaireState {
 
 const initialState: QuestionnaireState = {
 	answers: {},
-	currentQuestionId: 'init',
+	currentQuestionId: QUESTIONNAIRE_STEPS.startStep,
 	history: [],
 	isCompleted: false,
 }
@@ -35,7 +38,7 @@ export const questionnaireSlice = createSlice({
 
 			try {
 				const updatedAnswers = { ...state.answers }
-				storageService.set(QuestionnaireStorageE.answers, updatedAnswers)
+				storageService.set(QUESTIONNAIRE_STORAGE.answers, updatedAnswers)
 			} catch (error) {
 				console.error('Error saving to localStorage:', error)
 			}
@@ -54,13 +57,13 @@ export const questionnaireSlice = createSlice({
 
 			state.currentQuestionId = newQuestionId
 
-			Cookies.set(QuestionnaireStorageE.progress, newQuestionId, {
+			Cookies.set(QUESTIONNAIRE_STORAGE.progress, newQuestionId, {
 				path: '/',
 				expires: 7, // 7 days
 			})
 
 			try {
-				storageService.set(QuestionnaireStorageE.history, state.history)
+				storageService.set(QUESTIONNAIRE_STORAGE.history, state.history)
 			} catch (error) {
 				console.error('Error saving history to localStorage:', error)
 			}
@@ -73,13 +76,13 @@ export const questionnaireSlice = createSlice({
 				if (previousQuestionId) {
 					state.currentQuestionId = previousQuestionId
 
-					Cookies.set(QuestionnaireStorageE.progress, previousQuestionId, {
+					Cookies.set(QUESTIONNAIRE_STORAGE.progress, previousQuestionId, {
 						path: '/',
 						expires: 7,
 					})
 
 					try {
-						storageService.set(QuestionnaireStorageE.history, state.history)
+						storageService.set(QUESTIONNAIRE_STORAGE.history, state.history)
 					} catch (error) {
 						console.error('Error saving history to localStorage:', error)
 					}
@@ -96,13 +99,13 @@ export const questionnaireSlice = createSlice({
 			}
 
 			state.isCompleted = true
-			Cookies.set(QuestionnaireStorageE.progress, 'completed', {
+			Cookies.set(QUESTIONNAIRE_STORAGE.progress, QUESTIONNAIRE_STEPS.endStep, {
 				path: '/',
 				expires: 7,
 			})
 
 			try {
-				storageService.set(QuestionnaireStorageE.history, state.history)
+				storageService.set(QUESTIONNAIRE_STORAGE.history, state.history)
 			} catch (error) {
 				console.error('Error saving history to localStorage:', error)
 			}
@@ -110,23 +113,26 @@ export const questionnaireSlice = createSlice({
 
 		initializeFromStorage: state => {
 			try {
-				const savedAnswers = storageService.get(QuestionnaireStorageE.answers)
-				debugger
+				const savedAnswers = storageService.get(QUESTIONNAIRE_STORAGE.answers)
+
 				if (savedAnswers) {
 					state.answers = savedAnswers
 				}
 
-				const currentQuestionId = Cookies.get(QuestionnaireStorageE.progress)
-				if (currentQuestionId && currentQuestionId !== 'completed') {
+				const currentQuestionId = Cookies.get(QUESTIONNAIRE_STORAGE.progress)
+				if (
+					currentQuestionId &&
+					currentQuestionId !== QUESTIONNAIRE_STEPS.endStep
+				) {
 					state.currentQuestionId = currentQuestionId
 				}
 
-				const savedHistory = storageService.get(QuestionnaireStorageE.history)
+				const savedHistory = storageService.get(QUESTIONNAIRE_STORAGE.history)
 				if (savedHistory) {
 					state.history = savedHistory
 				}
 
-				if (currentQuestionId === 'completed') {
+				if (currentQuestionId === QUESTIONNAIRE_STEPS.endStep) {
 					state.isCompleted = true
 				}
 			} catch (error) {
@@ -136,16 +142,20 @@ export const questionnaireSlice = createSlice({
 
 		resetQuestionnaire: state => {
 			state.answers = {}
-			state.currentQuestionId = 'init'
+			state.currentQuestionId = QUESTIONNAIRE_STEPS.startStep
 			state.history = []
 			state.isCompleted = false
 
-			storageService.delete(QuestionnaireStorageE.answers)
-			storageService.delete(QuestionnaireStorageE.history)
-			Cookies.set(QuestionnaireStorageE.progress, 'init', {
-				path: '/',
-				expires: 7,
-			})
+			storageService.delete(QUESTIONNAIRE_STORAGE.answers)
+			storageService.delete(QUESTIONNAIRE_STORAGE.history)
+			Cookies.set(
+				QUESTIONNAIRE_STORAGE.progress,
+				QUESTIONNAIRE_STEPS.startStep,
+				{
+					path: '/',
+					expires: 7,
+				}
+			)
 		},
 	},
 })
