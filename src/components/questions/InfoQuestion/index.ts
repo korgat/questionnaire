@@ -1,1 +1,1 @@
-export { default as InfoQuestion } from './InfoQuestion'
+export { default as InfoQuestion } from "./InfoQuestion";

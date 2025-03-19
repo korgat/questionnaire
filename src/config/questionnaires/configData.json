@@ -1,323 +1,323 @@
 {
-	"id": "relationship-questionnaire",
-	"title": "Relationship Questionnaire",
-	"description": "Help us understand your relationship preferences",
-	"startQuestionId": "init",
-	"questions": {
-		"init": {
-			"id": "init",
-			"field": "gender",
-			"type": "radio",
-			"title": "Select your gender:",
-			"options": [
-				{ "value": "male", "label": "Male", "icon": "male" },
-				{ "value": "female", "label": "Female", "icon": "female" }
-			],
-			"navigationRule": "relationshipStatus"
-		},
+  "id": "relationship-questionnaire",
+  "title": "Relationship Questionnaire",
+  "description": "Help us understand your relationship preferences",
+  "startQuestionId": "init",
+  "questions": {
+    "init": {
+      "id": "init",
+      "field": "gender",
+      "type": "radio",
+      "title": "Select your gender:",
+      "options": [
+        { "value": "male", "label": "Male", "icon": "male" },
+        { "value": "female", "label": "Female", "icon": "female" }
+      ],
+      "navigationRule": "relationshipStatus"
+    },
 
-		"relationshipStatus": {
-			"id": "relationshipStatus",
-			"field": "relationshipStatus",
-			"type": "radio",
-			"title": "So we can get to know you better, tell us about your relationship status.",
-			"options": [
-				{
-					"value": "in-relationship",
-					"label": "In a relationship",
-					"icon": "two-hearts"
-				},
-				{ "value": "single", "label": "Single", "icon": "heart" }
-			],
-			"navigationRule": [
-				{
-					"condition": { "field": "relationshipStatus", "value": "single" },
-					"nextId": "singleParent"
-				},
-				{
-					"condition": {
-						"field": "relationshipStatus",
-						"value": "in-relationship"
-					},
-					"nextId": "parent"
-				}
-			]
-		},
+    "relationshipStatus": {
+      "id": "relationshipStatus",
+      "field": "relationshipStatus",
+      "type": "radio",
+      "title": "So we can get to know you better, tell us about your relationship status.",
+      "options": [
+        {
+          "value": "in-relationship",
+          "label": "In a relationship",
+          "icon": "two-hearts"
+        },
+        { "value": "single", "label": "Single", "icon": "heart" }
+      ],
+      "navigationRule": [
+        {
+          "condition": { "field": "relationshipStatus", "value": "single" },
+          "nextId": "singleParent"
+        },
+        {
+          "condition": {
+            "field": "relationshipStatus",
+            "value": "in-relationship"
+          },
+          "nextId": "parent"
+        }
+      ]
+    },
 
-		"singleParent": {
-			"id": "singleParent",
-			"field": "isParent",
-			"type": "radio",
-			"title": "Are you a single parent?",
-			"options": [
-				{ "value": "yes", "label": "Yes", "icon": "yes" },
-				{ "value": "no", "label": "No", "icon": "no" }
-			],
-			"navigationRule": "singleParentRelationship"
-		},
+    "singleParent": {
+      "id": "singleParent",
+      "field": "isParent",
+      "type": "radio",
+      "title": "Are you a single parent?",
+      "options": [
+        { "value": "yes", "label": "Yes", "icon": "yes" },
+        { "value": "no", "label": "No", "icon": "no" }
+      ],
+      "navigationRule": "singleParentRelationship"
+    },
 
-		"parent": {
-			"id": "parent",
-			"field": "isParent",
-			"type": "radio",
-			"title": "Are you a parent?",
-			"options": [
-				{ "value": "yes", "label": "Yes", "icon": "yes" },
-				{ "value": "no", "label": "No", "icon": "no" }
-			],
-			"navigationRule": "parentRelationship"
-		},
+    "parent": {
+      "id": "parent",
+      "field": "isParent",
+      "type": "radio",
+      "title": "Are you a parent?",
+      "options": [
+        { "value": "yes", "label": "Yes", "icon": "yes" },
+        { "value": "no", "label": "No", "icon": "no" }
+      ],
+      "navigationRule": "parentRelationship"
+    },
 
-		"parentRelationship": {
-			"id": "parentRelationship",
-			"field": "relationshipSatisfaction",
-			"type": "radio",
-			"title": "{gender} {isParent} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
-			"dynamicValues": {
-				"isParent": {
-					"yes": "who have children",
-					"no": ""
-				},
-				"gender": {
-					"male": "male",
-					"female": "female"
-				}
-			},
+    "parentRelationship": {
+      "id": "parentRelationship",
+      "field": "relationshipSatisfaction",
+      "type": "radio",
+      "title": "{gender} {isParent} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "dynamicValues": {
+        "isParent": {
+          "yes": "who have children",
+          "no": ""
+        },
+        "gender": {
+          "male": "male",
+          "female": "female"
+        }
+      },
 
-			"options": [
-				{
-					"value": "absolutelyUnhappy",
-					"label": "I was unhappy with low things were going in my relationship",
-					"icon": "unhappy"
-				},
-				{
-					"value": "particularyHappy",
-					"label": "I was unhappy with parts of my relationship, but some thing were working",
-					"icon": "expressionless"
-				},
-				{
-					"value": "generallyHappy",
-					"label": "I was generally happy with my relationship",
-					"icon": "happy"
-				},
-				{
-					"value": "neverBeenInRelationship",
-					"label": "I've never been in a relationship",
-					"icon": "innocent"
-				}
-			],
-			"navigationRule": "partnerType"
-		},
+      "options": [
+        {
+          "value": "absolutelyUnhappy",
+          "label": "I was unhappy with low things were going in my relationship",
+          "icon": "unhappy"
+        },
+        {
+          "value": "particularyHappy",
+          "label": "I was unhappy with parts of my relationship, but some thing were working",
+          "icon": "expressionless"
+        },
+        {
+          "value": "generallyHappy",
+          "label": "I was generally happy with my relationship",
+          "icon": "happy"
+        },
+        {
+          "value": "neverBeenInRelationship",
+          "label": "I've never been in a relationship",
+          "icon": "innocent"
+        }
+      ],
+      "navigationRule": "partnerType"
+    },
 
-		"partnerType": {
-			"id": "partnerType",
-			"field": "partnerType",
-			"type": "radio",
-			"title": "Is your partner an introvert or extrovert?",
-			"options": [
-				{ "value": "introvert", "label": "Introvert", "icon": "house" },
-				{ "value": "extrovert", "label": "Extrovert", "icon": "rocket" },
-				{ "value": "both", "label": "A bit of both", "icon": "raised-hands" }
-			],
-			"navigationRule": "partnerGender"
-		},
+    "partnerType": {
+      "id": "partnerType",
+      "field": "partnerType",
+      "type": "radio",
+      "title": "Is your partner an introvert or extrovert?",
+      "options": [
+        { "value": "introvert", "label": "Introvert", "icon": "house" },
+        { "value": "extrovert", "label": "Extrovert", "icon": "rocket" },
+        { "value": "both", "label": "A bit of both", "icon": "raised-hands" }
+      ],
+      "navigationRule": "partnerGender"
+    },
 
-		"partnerGender": {
-			"id": "partnerGender",
-			"field": "partnerGender",
-			"type": "radio",
-			"title": "What is your partner's gender?",
-			"options": [
-				{ "value": "male", "label": "Male", "icon": "male" },
-				{ "value": "female", "label": "Female", "icon": "female" }
-			],
-			"navigationRule": "sexStatement"
-		},
+    "partnerGender": {
+      "id": "partnerGender",
+      "field": "partnerGender",
+      "type": "radio",
+      "title": "What is your partner's gender?",
+      "options": [
+        { "value": "male", "label": "Male", "icon": "male" },
+        { "value": "female", "label": "Female", "icon": "female" }
+      ],
+      "navigationRule": "sexStatement"
+    },
 
-		"sexStatement": {
-			"id": "sexStatement",
-			"field": "isSexPriority",
-			"type": "radio",
-			"title": "Do you agree with the statement below?",
-			"description": "\"My partner and I make sex a priority in our relationship\"",
-			"options": [
-				{
-					"value": "stronglyAgree",
-					"label": "Strongly agree",
-					"icon": "thumb-up"
-				},
-				{ "value": "agree", "label": "Agree", "icon": "ok" },
-				{ "value": "neutral", "label": "Neutral", "icon": "handshake" },
-				{ "value": "disagree", "label": "Disagree", "icon": "thumb-down" },
-				{
-					"value": "stronglyDisagree",
-					"label": "Strongly disagree",
-					"icon": "gesture-no"
-				}
-			],
-			"navigationRule": "relationshipGoals"
-		},
+    "sexStatement": {
+      "id": "sexStatement",
+      "field": "isSexPriority",
+      "type": "radio",
+      "title": "Do you agree with the statement below?",
+      "description": "\"My partner and I make sex a priority in our relationship\"",
+      "options": [
+        {
+          "value": "stronglyAgree",
+          "label": "Strongly agree",
+          "icon": "thumb-up"
+        },
+        { "value": "agree", "label": "Agree", "icon": "ok" },
+        { "value": "neutral", "label": "Neutral", "icon": "handshake" },
+        { "value": "disagree", "label": "Disagree", "icon": "thumb-down" },
+        {
+          "value": "stronglyDisagree",
+          "label": "Strongly disagree",
+          "icon": "gesture-no"
+        }
+      ],
+      "navigationRule": "relationshipGoals"
+    },
 
-		"relationshipGoals": {
-			"id": "relationshipGoals",
-			"field": "relationshipGoals",
-			"type": "radio",
-			"title": "When you think about your relationship goals, you feel...?",
-			"options": [
-				{
-					"value": "optimistic",
-					"label": "Optimistic! They are totally doable, with some guidance.",
-					"icon": "optimistic"
-				},
-				{
-					"value": "cautious",
-					"label": "Cautious. I've struggled before, but I'm hopeful.",
-					"icon": "confused"
-				},
-				{
-					"value": "anxious",
-					"label": "I'm feeling a little anxious, honestly.",
-					"icon": "scary"
-				}
-			],
-			"navigationRule": "hearAboutUs"
-		},
+    "relationshipGoals": {
+      "id": "relationshipGoals",
+      "field": "relationshipGoals",
+      "type": "radio",
+      "title": "When you think about your relationship goals, you feel...?",
+      "options": [
+        {
+          "value": "optimistic",
+          "label": "Optimistic! They are totally doable, with some guidance.",
+          "icon": "optimistic"
+        },
+        {
+          "value": "cautious",
+          "label": "Cautious. I've struggled before, but I'm hopeful.",
+          "icon": "confused"
+        },
+        {
+          "value": "anxious",
+          "label": "I'm feeling a little anxious, honestly.",
+          "icon": "scary"
+        }
+      ],
+      "navigationRule": "hearAboutUs"
+    },
 
-		"hearAboutUs": {
-			"id": "hearAboutUs",
-			"field": "referral",
-			"type": "radio",
-			"title": "Where did you hear about us?",
-			"options": [
-				{ "value": "poster_billboard", "label": "Poster or Billboard" },
-				{ "value": "friend_family", "label": "Friend or Family" },
-				{ "value": "instagram", "label": "Instagram" },
-				{ "value": "direct_mail", "label": "Direct Mail or Package Insert" },
-				{ "value": "online_tv", "label": "Online TV or Streaming TV" },
-				{ "value": "tv", "label": "TV" },
-				{ "value": "radio", "label": "Radio" },
-				{
-					"value": "search_engine",
-					"label": "Search Engine (Google, Bing, etc.)"
-				},
-				{ "value": "newspaper_magazine", "label": "Newspaper or Magazine" },
-				{ "value": "facebook", "label": "Facebook" },
-				{ "value": "blog_review", "label": "Blog Post or Website Review" },
-				{ "value": "podcast", "label": "Podcast" },
-				{ "value": "influencer", "label": "Influencer" },
-				{ "value": "youtube", "label": "Youtube" },
-				{ "value": "pinterest", "label": "Pinterest" },
-				{ "value": "other", "label": "Other" }
-			],
-			"navigationRule": "completed"
-		},
+    "hearAboutUs": {
+      "id": "hearAboutUs",
+      "field": "referral",
+      "type": "radio",
+      "title": "Where did you hear about us?",
+      "options": [
+        { "value": "poster_billboard", "label": "Poster or Billboard" },
+        { "value": "friend_family", "label": "Friend or Family" },
+        { "value": "instagram", "label": "Instagram" },
+        { "value": "direct_mail", "label": "Direct Mail or Package Insert" },
+        { "value": "online_tv", "label": "Online TV or Streaming TV" },
+        { "value": "tv", "label": "TV" },
+        { "value": "radio", "label": "Radio" },
+        {
+          "value": "search_engine",
+          "label": "Search Engine (Google, Bing, etc.)"
+        },
+        { "value": "newspaper_magazine", "label": "Newspaper or Magazine" },
+        { "value": "facebook", "label": "Facebook" },
+        { "value": "blog_review", "label": "Blog Post or Website Review" },
+        { "value": "podcast", "label": "Podcast" },
+        { "value": "influencer", "label": "Influencer" },
+        { "value": "youtube", "label": "Youtube" },
+        { "value": "pinterest", "label": "Pinterest" },
+        { "value": "other", "label": "Other" }
+      ],
+      "navigationRule": "completed"
+    },
 
-		"singleParentRelationship": {
-			"id": "singleParentRelationship",
-			"field": "relationshipSatisfaction",
-			"type": "radio",
-			"title": "Single {gender} {isParent} need a slightly different approach to improve their relationship. Which statement best describes you?",
-			"dynamicValues": {
-				"isParent": {
-					"yes": "who have children",
-					"no": ""
-				},
-				"gender": {
-					"male": "male",
-					"female": "female"
-				}
-			},
+    "singleParentRelationship": {
+      "id": "singleParentRelationship",
+      "field": "relationshipSatisfaction",
+      "type": "radio",
+      "title": "Single {gender} {isParent} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "dynamicValues": {
+        "isParent": {
+          "yes": "who have children",
+          "no": ""
+        },
+        "gender": {
+          "male": "male",
+          "female": "female"
+        }
+      },
 
-			"options": [
-				{
-					"value": "absolutelyUnhappy",
-					"label": "I'm very unhappy with how things are going in my relationship",
-					"icon": "happy"
-				},
-				{
-					"value": "particularyHappy",
-					"label": "I'm unhappy with parts of my relationship, but some things are working well",
-					"icon": "expressionless"
-				},
-				{
-					"value": "generallyHappy",
-					"label": "I'm generally happy in my relationship",
-					"icon": "unhappy"
-				}
-			],
-			"navigationRule": "isOverthink"
-		},
+      "options": [
+        {
+          "value": "absolutelyUnhappy",
+          "label": "I'm very unhappy with how things are going in my relationship",
+          "icon": "happy"
+        },
+        {
+          "value": "particularyHappy",
+          "label": "I'm unhappy with parts of my relationship, but some things are working well",
+          "icon": "expressionless"
+        },
+        {
+          "value": "generallyHappy",
+          "label": "I'm generally happy in my relationship",
+          "icon": "unhappy"
+        }
+      ],
+      "navigationRule": "isOverthink"
+    },
 
-		"isOverthink": {
-			"id": "isOverthink",
-			"field": "isOverthink",
-			"type": "radio",
-			"title": "Do you tend to overthink?",
+    "isOverthink": {
+      "id": "isOverthink",
+      "field": "isOverthink",
+      "type": "radio",
+      "title": "Do you tend to overthink?",
 
-			"options": [
-				{ "value": "yes", "label": "Yes", "icon": "yes" },
-				{ "value": "no", "label": "No", "icon": "no" }
-			],
-			"navigationRule": "howItWork"
-		},
+      "options": [
+        { "value": "yes", "label": "Yes", "icon": "yes" },
+        { "value": "no", "label": "No", "icon": "no" }
+      ],
+      "navigationRule": "howItWork"
+    },
 
-		"overreact": {
-			"id": "overreact",
-			"field": "isOverreact",
-			"type": "radio",
-			"title": "Do you tend to overreact?",
+    "overreact": {
+      "id": "overreact",
+      "field": "isOverreact",
+      "type": "radio",
+      "title": "Do you tend to overreact?",
 
-			"options": [
-				{ "value": "yes", "label": "Yes", "icon": "yes" },
-				{ "value": "no", "label": "No", "icon": "no" }
-			],
-			"navigationRule": "howItWork"
-		},
+      "options": [
+        { "value": "yes", "label": "Yes", "icon": "yes" },
+        { "value": "no", "label": "No", "icon": "no" }
+      ],
+      "navigationRule": "howItWork"
+    },
 
-		"howItWork": {
-			"id": "howItWork",
-			"type": "info",
-			"title": "So how does it work?",
-			"description": "This questionnaire helps us understand your relationship preferences and personality traits to provide better matches.",
-			"showContinueButton": true,
-			"navigationRule": [
-				{
-					"condition": { "field": "isOverthink", "value": "yes" },
-					"nextId": "mostImportant"
-				},
-				{
-					"condition": { "field": "isOverthink", "value": "no" },
-					"nextId": "emotionalControl"
-				}
-			]
-		},
+    "howItWork": {
+      "id": "howItWork",
+      "type": "info",
+      "title": "So how does it work?",
+      "description": "This questionnaire helps us understand your relationship preferences and personality traits to provide better matches.",
+      "showContinueButton": true,
+      "navigationRule": [
+        {
+          "condition": { "field": "isOverthink", "value": "yes" },
+          "nextId": "mostImportant"
+        },
+        {
+          "condition": { "field": "isOverthink", "value": "no" },
+          "nextId": "emotionalControl"
+        }
+      ]
+    },
 
-		"emotionalControl": {
-			"id": "emotionalControl",
-			"field": "isImpulsivity",
-			"type": "radio",
-			"title": "Is emotional control tricky for you?",
-			"options": [
-				{ "value": "yes", "label": "Yes", "icon": "thumb-up" },
-				{ "value": "sometimes", "label": "Sometimes", "icon": "ok" },
-				{ "value": "rarely", "label": "Rarely", "icon": "handshake" },
-				{ "value": "not", "label": "Not at all", "icon": "thumb-down" }
-			],
-			"navigationRule": "hearAboutUs"
-		},
+    "emotionalControl": {
+      "id": "emotionalControl",
+      "field": "isImpulsivity",
+      "type": "radio",
+      "title": "Is emotional control tricky for you?",
+      "options": [
+        { "value": "yes", "label": "Yes", "icon": "thumb-up" },
+        { "value": "sometimes", "label": "Sometimes", "icon": "ok" },
+        { "value": "rarely", "label": "Rarely", "icon": "handshake" },
+        { "value": "not", "label": "Not at all", "icon": "thumb-down" }
+      ],
+      "navigationRule": "hearAboutUs"
+    },
 
-		"mostImportant": {
-			"id": "mostImportant",
-			"field": "priority",
-			"type": "radio",
-			"title": "What is most important to you?",
-			"options": [
-				{ "value": "success", "label": "Success", "icon": "success" },
-				{ "value": "romance", "label": "Romance", "icon": "love-letter" },
-				{ "value": "stability", "label": "Stability", "icon": "house" },
-				{ "value": "freedom", "label": "Freedom", "icon": "wind-face" }
-			],
-			"navigationRule": "hearAboutUs"
-		}
-	}
+    "mostImportant": {
+      "id": "mostImportant",
+      "field": "priority",
+      "type": "radio",
+      "title": "What is most important to you?",
+      "options": [
+        { "value": "success", "label": "Success", "icon": "success" },
+        { "value": "romance", "label": "Romance", "icon": "love-letter" },
+        { "value": "stability", "label": "Stability", "icon": "house" },
+        { "value": "freedom", "label": "Freedom", "icon": "wind-face" }
+      ],
+      "navigationRule": "hearAboutUs"
+    }
+  }
 }

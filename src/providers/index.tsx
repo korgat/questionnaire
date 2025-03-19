@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react'
-import ReduxProvider from './reduxProvider'
+import { PropsWithChildren } from "react";
+import ReduxProvider from "./reduxProvider";
 
 const Providers = ({ children }: PropsWithChildren) => {
-	return <ReduxProvider>{children}</ReduxProvider>
-}
+  return <ReduxProvider>{children}</ReduxProvider>;
+};
 
-export default Providers
+export default Providers;

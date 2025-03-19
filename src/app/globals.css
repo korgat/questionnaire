@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-	--primary: #a855f7;
-	--light: #fbfbff;
+  --primary: #a855f7;
+  --light: #fbfbff;
 
-	--muted: #eaeef7;
-	--border: #e0e0e0;
-	--background: #ffffff;
-	--foreground: #171717;
+  --muted: #eaeef7;
+  --border: #e0e0e0;
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
 body {
-	color: var(--foreground);
-	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }

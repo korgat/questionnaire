@@ -1,17 +1,17 @@
-import { RootState } from '..'
+import { RootState } from "..";
 
-export const selectAnswers = (state: RootState) => state.questionnaire.answers
+export const selectAnswers = (state: RootState) => state.questionnaire.answers;
 export const selectCurrentQuestionId = (state: RootState) =>
-	state.questionnaire.currentQuestionId
+  state.questionnaire.currentQuestionId;
 export const selectIsCompleted = (state: RootState) =>
-	state.questionnaire.isCompleted
-export const selectHistory = (state: RootState) => state.questionnaire.history
+  state.questionnaire.isCompleted;
+export const selectHistory = (state: RootState) => state.questionnaire.history;
 export const selectCanGoBack = (state: RootState) =>
-	state.questionnaire.history.length > 0
+  state.questionnaire.history.length > 0;
 
 export const selectAnswerByQuestionId =
-	(questionId: string) => (state: RootState) =>
-		state.questionnaire.answers[questionId]
+  (questionId: string) => (state: RootState) =>
+    state.questionnaire.answers[questionId];
 
 export const selectAnswerByField = (field: string) => (state: RootState) =>
-	state.questionnaire.answers[field]
+  state.questionnaire.answers[field];

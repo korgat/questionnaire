@@ -1,4 +1,4 @@
-import { Questionnaire } from '@/types/questionnaire'
-import configData from './configData.json'
+import { Questionnaire } from "@/types/questionnaire";
+import configData from "./configData.json";
 
-export const questionnaireConfig = configData as Questionnaire
+export const questionnaireConfig = configData as Questionnaire;

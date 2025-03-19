@@ -1,9 +1,9 @@
-import NavigationPanel from '@/components/layout/QuestionnaireLayout/NavigationPanel'
+import NavigationPanel from "@/components/layout/QuestionnaireLayout/NavigationPanel";
 
 export default function StudioLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-	return <NavigationPanel>{children}</NavigationPanel>
+  return <NavigationPanel>{children}</NavigationPanel>;
 }
