@@ -1,15 +1,15 @@
 ## Getting Started
 
-Для запуску проекту використовувати скрипти
+To run the project, use the following scripts:
 
-- npm run dev - запуск проекту в режимі розробника
-- npm run build - запуск збірки проекту
-- npm run start - запуск зібраного проекту
+- `npm run dev` - Run the project in development mode.
+- `npm run build` - Build the project.
+- `npm run start` - Start the built project.
 
-## Додатково
+## Additional Information
 
-    При виконанні завдання частково опирався на опитувальник https://appnebula.co/app-subscription-4-7d-trial-per-day.
+While working on the task, I partially relied on the questionnaire: [https://appnebula.co/app-subscription-4-7d-trial-per-day](https://appnebula.co/app-subscription-4-7d-trial-per-day).
 
-При аналізі помітив проблему відображення екрану на сторінках де необхідні динамічна дані, наприклад https://appnebula.co/app-subscription-4-7d-trial-per-day/singleZodiacInfo, тобто користувач може перейти на дані сторінки (скопіювавши посилання) не заповнивши необхідні попередні кроки для відображення.
+During analysis, I noticed an issue with the screen rendering on pages that require dynamic data, for example, [https://appnebula.co/app-subscription-4-7d-trial-per-day/singleZodiacInfo](https://appnebula.co/app-subscription-4-7d-trial-per-day/singleZodiacInfo). In this case, the user can directly navigate to these pages (by copying the link) without completing the necessary previous steps for the data to display.
 
-- Для вирішення даної проблеми використав middleware для обмеження доступу до сторінок, або переадресації на початок (або останній залишений крок) опитувальника якщо користувач намагатиметься перейти на кроки для яких необхідні данні. Також унеможливить пропуск заповнення важливих опитувань
+- To resolve this issue, I used middleware to restrict access to these pages or redirect the user to the start (or the last completed step) of the questionnaire. This ensures that users cannot skip required questions and prevents them from accessing steps that require prior data.
